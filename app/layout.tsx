@@ -49,12 +49,15 @@ export const metadata: Metadata = {
     siteName: content.site.title,
     title: content.site.title,
     description: content.site.description,
+    // JPEG (not PNG): Facebook/Messenger/Instagram reliably process JPEG for the
+    // big preview card; with the PNG, FB fell back to the app icon. WhatsApp is
+    // fine either way. Using a fresh URL (/og.jpg) also bypasses FB's stale cache.
     images: [
       {
-        url: "/og.png",
+        url: "/og.jpg",
         width: 1200,
         height: 630,
-        type: "image/png",
+        type: "image/jpeg",
         alt: content.site.title,
       },
     ],
@@ -63,7 +66,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: content.site.title,
     description: content.site.description,
-    images: ["/og.png"],
+    images: ["/og.jpg"],
   },
 };
 
