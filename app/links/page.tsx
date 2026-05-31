@@ -57,18 +57,24 @@ export default function LinksPage() {
     }
   };
 
-  // Native share sheet (Messenger, Messenger, WhatsApp, SMS…). On desktop /
+  // Native share sheet (Messenger, Instagram, WhatsApp, SMS…). On desktop /
   // browsers without the Web Share API, fall back to copying the message + link.
   const share = async (key: string, note: string, link: string) => {
+    // IMPORTANT: put the note AND link in ONE text string and do NOT pass `url`
+    // separately. Passing a separate `url` makes Messenger post two bubbles (a
+    // preview card + a separate text message). Inlining the link in `text` makes
+    // it post a SINGLE message — text + auto link-preview in one bubble — like
+    // WhatsApp.
+    const text = `${note} ${link}`;
     if (typeof navigator !== "undefined" && navigator.share) {
       try {
-        await navigator.share({ title: content.site.title, text: note, url: link });
+        await navigator.share({ text });
         return;
       } catch {
         /* user cancelled or share failed — fall through to copy */
       }
     }
-    copy(key, `${note} ${link}`);
+    copy(key, text);
   };
 
   const btn =
