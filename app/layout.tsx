@@ -40,12 +40,15 @@ export const metadata: Metadata = {
   // Rich preview when the link is shared on WhatsApp / Messenger / Facebook.
   openGraph: {
     type: "website",
-    // Canonical URL. Every personalized link (?to=…&role=…) shows the SAME
-    // generic preview, so we point them all at the bare URL — Facebook then
-    // caches ONE preview object and reuses it for all 34 links (scrape once,
-    // every link shows the card). The link each guest taps is still their own
-    // ?to=… ; og:url only controls Facebook's caching, not the click target.
-    url: SITE_URL,
+    // ⚠️ Deliberately NO `url` (og:url). Facebook uses og:url as the preview
+    // CARD's tap destination — setting it to the bare canonical made tapping the
+    // image open the bare/guest page, so godparents who tapped the card (not the
+    // text link) lost their ?to= personalization and saw "You're Invited" instead
+    // of "Dear Ninong …". This is a static export (one index.html for every
+    // ?to=), so og:url can't vary per link. Omitting it makes the card open the
+    // actual shared URL (?to=…&role=…), preserving personalization. Tradeoff:
+    // each personalized link is its own FB preview object (FB scrapes each on
+    // first share) rather than all sharing one — fine now that og.jpg loads fast.
     siteName: content.site.title,
     title: content.site.title,
     description: content.site.description,
