@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { content } from "@/lib/content";
+import { useConfirm } from "@/components/ConfirmDialog";
 
 /**
  * A private helper page (for the host, not guests) at /links.
@@ -77,13 +78,16 @@ export default function LinksPage() {
       return next;
     });
 
-  const resetAll = () => {
-    if (
-      typeof window !== "undefined" &&
-      window.confirm("Clear all “messaged” checkmarks? This can't be undone.")
-    ) {
-      setMessaged({});
-    }
+  const confirm = useConfirm();
+  const resetAll = async () => {
+    const ok = await confirm({
+      title: "Reset checkmarks?",
+      message: "This clears every “messaged” check on this device. It can't be undone.",
+      confirmLabel: "Reset",
+      cancelLabel: "Keep them",
+      tone: "danger",
+    });
+    if (ok) setMessaged({});
   };
 
   const messagedCount = guests.filter(isMessaged).length;

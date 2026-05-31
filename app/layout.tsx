@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Fraunces, Parisienne, Nunito } from "next/font/google";
 import { content } from "@/lib/content";
+import { ConfirmProvider } from "@/components/ConfirmDialog";
 import "./globals.css";
 
 // Soft, characterful storybook serif — display headings and body.
@@ -83,7 +84,9 @@ export default function RootLayout({
       lang="en"
       className={`${fraunces.variable} ${parisienne.variable} ${nunito.variable}`}
     >
-      <body>{children}</body>
+      <body>
+        <ConfirmProvider>{children}</ConfirmProvider>
+      </body>
     </html>
   );
 }
