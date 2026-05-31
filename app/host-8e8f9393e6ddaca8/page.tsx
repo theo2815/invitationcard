@@ -7,7 +7,7 @@ import { useConfirm } from "@/components/ConfirmDialog";
 /**
  * A private helper page (for the host, not guests).
  *
- * 🔒 Lives at an UNGUESSABLE, UNLISTED slug ( /host-0d8ec983c5 ) — not linked
+ * 🔒 Lives at an UNGUESSABLE, UNLISTED slug ( /host-8e8f9393e6ddaca8 ) — not linked
  * anywhere on the site, so guests can't stumble onto it. Static sites can't do
  * real auth; this is "secret URL" protection (the godparent names are already
  * public in the main invite's Godparents section, so this only hides the host
