@@ -28,12 +28,11 @@ const nunito = Nunito({
   display: "swap",
 });
 
-// ⚠️ DEPLOY: set this to your real site URL so link previews (the share image)
-// resolve to an absolute URL. Easiest path: add an env var NEXT_PUBLIC_SITE_URL
-// in Vercel (e.g. https://your-project.vercel.app or your custom domain) and
-// redeploy — no code change needed. The fallback below is only a placeholder.
+// The live site URL — used so link previews (the share image) resolve to an
+// absolute URL. Set to the deployed Vercel domain. If you later move to a custom
+// domain, update this (or set NEXT_PUBLIC_SITE_URL in Vercel) and redeploy.
 const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://baby-don-christening.vercel.app";
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://invitationcard-jade.vercel.app";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),

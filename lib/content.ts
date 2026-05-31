@@ -216,10 +216,11 @@ ninang: [
     volume: 0.5, // target volume after the fade-in (0–1)
   },
 
-  // Used in the browser tab + link previews.
+  // Used in the browser tab + link previews (WhatsApp/Messenger share card).
   site: {
     title: "The Christening of Baby Don",
-    description: "Join us as we celebrate the Holy Baptism of Don Ezeikiel V. Abellana.",
+    description:
+      "With joyful hearts, we invite you to Baby Don's Holy Baptism — June 28, 2026 · Bantayan, Cebu 🕊️",
   },
 } as const;
 
