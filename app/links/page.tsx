@@ -1,24 +1,24 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { content } from "@/lib/content";
 
 /**
  * A private helper page (for the host, not guests) at /links.
  * Lists every godparent with a ready-to-send personalized invitation link,
- * plus copy and WhatsApp-share buttons. Links are built from whatever domain
- * this page is opened on, so they're correct in dev and after deploy.
+ * plus copy and WhatsApp-share buttons. Links always point at the canonical
+ * PRODUCTION url (content.site.url) — NOT window.location.origin — so even if
+ * this page is opened on a Vercel deployment-specific URL (login-protected, and
+ * it would break the link preview), the copied links are correct & shareable.
  */
 
 type Guest = { name: string; role: string; roleLabel: string };
 
 export default function LinksPage() {
-  const [origin, setOrigin] = useState("");
   const [copied, setCopied] = useState<string | null>(null);
 
-  useEffect(() => {
-    setOrigin(window.location.origin);
-  }, []);
+  // Always the public production origin, regardless of where this page is opened.
+  const origin = content.site.url;
 
   const guests = useMemo<Guest[]>(() => {
     const { ninong, ninang } = content.godparents;
@@ -78,7 +78,7 @@ export default function LinksPage() {
               </div>
 
               <p className="mt-3 break-all rounded-lg bg-powder/60 px-3 py-2 font-mono text-xs text-ink/70">
-                {origin ? link : "Loading link…"}
+                {link}
               </p>
 
               <div className="mt-3 flex flex-wrap gap-2">

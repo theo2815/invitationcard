@@ -219,6 +219,13 @@ ninang: [
   // Used in the browser tab + link previews (WhatsApp/Messenger share card).
   site: {
     title: "The Christening of Baby Don",
+    // The PUBLIC PRODUCTION URL (no trailing slash). Used for the share preview
+    // (og:url) AND by the /links page so every copied invitation points HERE —
+    // never at a Vercel deployment-specific URL (e.g.
+    // invitationcard-<hash>-<you>-projects.vercel.app), which is login-protected
+    // (Facebook's crawler gets 401 → no preview card) and changes every deploy.
+    // If you add a custom domain later, change this one line.
+    url: "https://invitationcard-jade.vercel.app",
     description:
       "With joyful hearts, we invite you to Baby Don's Holy Baptism — June 28, 2026 · Bantayan, Cebu 🕊️",
   },

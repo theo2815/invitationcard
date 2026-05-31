@@ -29,10 +29,9 @@ const nunito = Nunito({
 });
 
 // The live site URL — used so link previews (the share image) resolve to an
-// absolute URL. Set to the deployed Vercel domain. If you later move to a custom
-// domain, update this (or set NEXT_PUBLIC_SITE_URL in Vercel) and redeploy.
-const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://invitationcard-jade.vercel.app";
+// absolute URL. Single source of truth is content.site.url; an env var can
+// override it on Vercel (e.g. for a custom domain) without a code change.
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? content.site.url;
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
