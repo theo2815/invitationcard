@@ -24,6 +24,16 @@ const PETALS = Array.from({ length: 16 }, (_, i) => {
   };
 });
 
+/** Capitalize each word's first letter without lowercasing the rest, so a
+ *  link like ?to=theo shows "Theo" — while names already cased like "RJ" or
+ *  "Niño" are left intact (a naive title-case would turn "RJ" into "Rj"). */
+function titleCase(s: string): string {
+  return s
+    .split(/\s+/)
+    .map((w) => (w ? w[0].toUpperCase() + w.slice(1) : w))
+    .join(" ");
+}
+
 /**
  * Full-screen "envelope" that sits over the invitation until the guest taps it.
  * The guest's name + role ride in the URL ( ?to=Antonio&role=ninong ) and are
@@ -46,7 +56,7 @@ export default function InvitationGate() {
     const roleKey = params.get("role")?.trim().toLowerCase();
     if (name) {
       const roleLabel = roleKey ? content.envelope.roleLabels[roleKey] : "";
-      setGreeting(`Dear ${roleLabel ? `${roleLabel} ` : ""}${name}`);
+      setGreeting(`Dear ${roleLabel ? `${roleLabel} ` : ""}${titleCase(name)}`);
     }
   }, []);
 

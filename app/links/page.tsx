@@ -28,11 +28,16 @@ export default function LinksPage() {
     ];
   }, []);
 
+  // The envelope greets by FIRST name only ("Dear Ninong Theo"), so the link
+  // carries just the first name. The card below still shows the full name so the
+  // host knows exactly who each link is for.
+  const firstNameOf = (name: string) => name.trim().split(/\s+/)[0];
+
   const linkFor = (g: Guest) =>
-    `${origin}/?to=${encodeURIComponent(g.name)}&role=${g.role}`;
+    `${origin}/?to=${encodeURIComponent(firstNameOf(g.name))}&role=${g.role}`;
 
   const messageFor = (g: Guest, link: string) =>
-    `Dear ${g.roleLabel} ${g.name}, you're invited to the christening of ${content.baby.firstName}. Please open your invitation here: ${link}`;
+    `Dear ${g.roleLabel} ${firstNameOf(g.name)}, you're invited to the christening of ${content.baby.firstName}. Please open your invitation here: ${link}`;
 
   const copy = async (key: string, text: string) => {
     try {
