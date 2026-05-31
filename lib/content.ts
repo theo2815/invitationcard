@@ -220,8 +220,8 @@ ninang: [
   site: {
     title: "The Christening of Baby Don",
     // The PUBLIC PRODUCTION URL (no trailing slash). Used for the share preview
-    // (og:url) AND by the /links page so every copied invitation points HERE —
-    // never at a Vercel deployment-specific URL (e.g.
+    // (metadataBase) AND by the host links page so every copied invitation points
+    // HERE — never at a Vercel deployment-specific URL (e.g.
     // invitationcard-<hash>-<you>-projects.vercel.app), which is login-protected
     // (Facebook's crawler gets 401 → no preview card) and changes every deploy.
     // If you add a custom domain later, change this one line.

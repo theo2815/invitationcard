@@ -5,7 +5,14 @@ import { content } from "@/lib/content";
 import { useConfirm } from "@/components/ConfirmDialog";
 
 /**
- * A private helper page (for the host, not guests) at /links.
+ * A private helper page (for the host, not guests).
+ *
+ * 🔒 Lives at an UNGUESSABLE, UNLISTED slug ( /host-0d8ec983c5 ) — not linked
+ * anywhere on the site, so guests can't stumble onto it. Static sites can't do
+ * real auth; this is "secret URL" protection (the godparent names are already
+ * public in the main invite's Godparents section, so this only hides the host
+ * TOOLS, not the names). To rotate the slug, rename this folder.
+ *
  * Lists a generic GUEST link plus every godparent's personalized link, each with
  * Copy, WhatsApp, and a native "Share…" button (the share sheet — Messenger, etc.).
  *
