@@ -60,21 +60,19 @@ export default function LinksPage() {
   // Native share sheet (Messenger, Instagram, WhatsApp, SMS…). On desktop /
   // browsers without the Web Share API, fall back to copying the message + link.
   const share = async (key: string, note: string, link: string) => {
-    // IMPORTANT: put the note AND link in ONE text string and do NOT pass `url`
-    // separately. Passing a separate `url` makes Messenger post two bubbles (a
-    // preview card + a separate text message). Inlining the link in `text` makes
-    // it post a SINGLE message — text + auto link-preview in one bubble — like
-    // WhatsApp.
-    const text = `${note} ${link}`;
+    // Pass the link as a real `url` so the target app builds the rich preview
+    // card (Messenger ONLY previews a proper url — inlining it in text kills the
+    // card). `text` carries the personal note. Messenger renders the card as its
+    // own element; that styling is Messenger's, not something we can change.
     if (typeof navigator !== "undefined" && navigator.share) {
       try {
-        await navigator.share({ text });
+        await navigator.share({ text: note, url: link });
         return;
       } catch {
         /* user cancelled or share failed — fall through to copy */
       }
     }
-    copy(key, text);
+    copy(key, `${note} ${link}`);
   };
 
   const btn =
