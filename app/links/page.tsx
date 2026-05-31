@@ -38,14 +38,14 @@ export default function LinksPage() {
   const linkFor = (g: Guest) =>
     `${origin}/?to=${encodeURIComponent(firstNameOf(g.name))}&role=${g.role}`;
 
-  // Short note (NO url) — used as the share-sheet text + WhatsApp text. The url
-  // is passed/appended separately so it isn't duplicated.
+  // Warm note (NO url) — used as the share-sheet text + WhatsApp/Copy text. The
+  // link is passed/appended separately so it isn't duplicated.
   const noteFor = (g: Guest) =>
-    `Dear ${g.roleLabel} ${firstNameOf(g.name)}, you're invited to the Christening of ${content.baby.firstName}. Please open your invitation:`;
+    `Dear ${g.roleLabel} ${firstNameOf(g.name)},\n\nYou are warmly invited to celebrate the christening of ${content.baby.firstName}. Your presence would make this special occasion even more meaningful to us.\n\nPlease open the invitation for more details.`;
 
   // Generic link for ordinary guests (no name) — envelope shows "You're Invited".
   const guestLink = `${origin}/`;
-  const guestNote = `You're invited to the Christening of ${content.baby.firstName}! Please open your invitation:`;
+  const guestNote = `Dear Family & Friends,\n\nYou are warmly invited to celebrate the christening of ${content.baby.firstName}. Your presence would make this special occasion even more meaningful to us.\n\nPlease open the invitation for more details.`;
 
   const copy = async (key: string, text: string) => {
     try {
@@ -72,7 +72,7 @@ export default function LinksPage() {
         /* user cancelled or share failed — fall through to copy */
       }
     }
-    copy(key, `${note} ${link}`);
+    copy(key, `${note}\n${link}`);
   };
 
   const btn =
@@ -81,11 +81,11 @@ export default function LinksPage() {
   // Shared Copy / WhatsApp / Share… button row.
   const actions = (key: string, link: string, note: string) => (
     <div className="mt-3 flex flex-wrap gap-2">
-      <button type="button" onClick={() => copy(key, link)} className={btn}>
-        {copied === key ? "Copied!" : "Copy link"}
+      <button type="button" onClick={() => copy(key, `${note}\n${link}`)} className={btn}>
+        {copied === key ? "Copied!" : "Copy message"}
       </button>
       <a
-        href={`https://wa.me/?text=${encodeURIComponent(`${note} ${link}`)}`}
+        href={`https://wa.me/?text=${encodeURIComponent(`${note}\n${link}`)}`}
         target="_blank"
         rel="noopener noreferrer"
         className={btn}
