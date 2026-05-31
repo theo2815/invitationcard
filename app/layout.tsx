@@ -41,6 +41,12 @@ export const metadata: Metadata = {
   // Rich preview when the link is shared on WhatsApp / Messenger / Facebook.
   openGraph: {
     type: "website",
+    // Canonical URL. Every personalized link (?to=…&role=…) shows the SAME
+    // generic preview, so we point them all at the bare URL — Facebook then
+    // caches ONE preview object and reuses it for all 34 links (scrape once,
+    // every link shows the card). The link each guest taps is still their own
+    // ?to=… ; og:url only controls Facebook's caching, not the click target.
+    url: SITE_URL,
     siteName: content.site.title,
     title: content.site.title,
     description: content.site.description,
