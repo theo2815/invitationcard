@@ -1,0 +1,79 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-paper text-ink font-sans antialiased;
+  /* Decorative watercolor blooms are placed off-canvas; clip any horizontal
+     spill so phones never get a stray sideways scroll/jiggle. */
+  overflow-x: hidden;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* ── Watercolor washes ────────────────────────────────────────────
+     Layered, soft-edged radial gradients over warm paper read like
+     translucent watercolor blooms instead of a single flat fill. */
+  .bg-wash-sky {
+    background-color: #fbf6ec;
+    background-image:
+      radial-gradient(58% 48% at 14% 12%, rgba(159, 203, 227, 0.5) 0%, rgba(159, 203, 227, 0) 62%),
+      radial-gradient(54% 44% at 86% 16%, rgba(241, 212, 199, 0.55) 0%, rgba(241, 212, 199, 0) 62%),
+      radial-gradient(52% 46% at 78% 82%, rgba(199, 216, 192, 0.5) 0%, rgba(199, 216, 192, 0) 64%),
+      radial-gradient(58% 50% at 18% 86%, rgba(207, 230, 242, 0.55) 0%, rgba(207, 230, 242, 0) 62%),
+      radial-gradient(120% 90% at 50% -12%, rgba(255, 255, 255, 0.85) 0%, rgba(255, 255, 255, 0) 55%);
+  }
+
+  /* Calmer wash for interior sections — mostly paper with faint blooms. */
+  .bg-wash-soft {
+    background-color: #fbf6ec;
+    background-image:
+      radial-gradient(50% 60% at 88% 8%, rgba(207, 230, 242, 0.45) 0%, rgba(207, 230, 242, 0) 60%),
+      radial-gradient(48% 56% at 6% 92%, rgba(241, 212, 199, 0.4) 0%, rgba(241, 212, 199, 0) 60%);
+  }
+
+  /* Warm paper with a faint top bloom — the page base. */
+  .bg-paper-soft {
+    background-color: #fbf6ec;
+    background-image: radial-gradient(120% 70% at 50% -10%, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0) 60%);
+  }
+
+  /* ── Paper grain overlay ──────────────────────────────────────────
+     Fine fractal-noise texture, multiplied over everything at low
+     opacity so flat areas feel like pressed paper, not screen. */
+  .grain {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.86' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  /* Small kerned label — warm gold tracking. */
+  .label-spaced {
+    @apply font-sans text-xs font-semibold uppercase tracking-[0.32em] text-petal/90;
+  }
+
+  /* A soft paper "card" with a deckled, hand-cut feel. */
+  .card-paper {
+    @apply rounded-[1.75rem] border border-white/70 bg-cream/80 shadow-[0_18px_40px_-24px_rgba(58,90,114,0.45)] backdrop-blur-sm;
+  }
+}
+
+/* Respect users who prefer less motion — kill the ambient looping anims. */
+@media (prefers-reduced-motion: reduce) {
+  .animate-floaty,
+  .animate-drift,
+  .animate-sway,
+  .animate-sway-slow,
+  .animate-bob {
+    animation: none !important;
+  }
+}

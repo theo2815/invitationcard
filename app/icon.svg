@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <defs>
+    <radialGradient id="wax" cx="38%" cy="32%" r="80%">
+      <stop offset="0" stop-color="#E2CB92"/>
+      <stop offset="0.55" stop-color="#C6A664"/>
+      <stop offset="1" stop-color="#9C7B3A"/>
+    </radialGradient>
+  </defs>
+  <!-- wax seal disc, echoing the envelope -->
+  <circle cx="16" cy="16" r="15" fill="url(#wax)" stroke="#3A5A72" stroke-opacity="0.28" stroke-width="1"/>
+  <!-- the monogram, large so it stays legible at tab size (16px) -->
+  <text x="16" y="16.8" text-anchor="middle" dominant-baseline="central"
+        font-family="Georgia, 'Times New Roman', serif" font-size="21" font-weight="700"
+        fill="#ffffff">D</text>
+</svg>

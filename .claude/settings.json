@@ -1,0 +1,23 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "powershell",
+            "args": [
+              "-NoProfile",
+              "-ExecutionPolicy",
+              "Bypass",
+              "-File",
+              "C:\\Users\\Theo Cedric Chan\\documents\\Start up project\\invitationcard\\.claude\\load-vault.ps1"
+            ],
+            "timeout": 20,
+            "statusMessage": "Loading InvitationCard vault into context..."
+          }
+        ]
+      }
+    ]
+  }
+}
