@@ -9,7 +9,9 @@ import Venue from "@/components/Venue";
 import AddToCalendar from "@/components/AddToCalendar";
 import Timeline from "@/components/Timeline";
 import Gallery from "@/components/Gallery";
-import Godparents from "@/components/Godparents";
+// [HIDDEN] Ninong & Ninang section — hidden per client request (2026-06-14).
+// To restore: uncomment this import AND the <Godparents /> line below.
+// import Godparents from "@/components/Godparents";
 import DressCode from "@/components/DressCode";
 import Safety from "@/components/Safety";
 import Gifts from "@/components/Gifts";
@@ -50,7 +52,10 @@ export default function Home() {
 
         <Gallery />
 
-        <Godparents />
+        {/* [HIDDEN] Ninong & Ninang section — hidden per client request (2026-06-14).
+            To restore: uncomment the Godparents import at the top AND the line below.
+            Unhide this when Theo (ME) requests it. */}
+        {/* <Godparents /> */}
 
         <DressCode />
 
