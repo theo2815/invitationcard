@@ -20,12 +20,12 @@ export const content = {
 
   event: {
     // ISO date+time of the ceremony — drives the countdown timer. (Local time.)
-    date: "2026-06-28T11:00:00",
+    date: "2026-06-28T10:00:00",
     // When the celebration ends — used for the Add-to-Calendar file (sweet send-off).
     endDate: "2026-06-28T16:00:00",
-    dateDisplay: "Sunday, the Twenty-Eighth of June",
-    yearDisplay: "Two Thousand and Twenty-Six",
-    timeDisplay: "Eleven o'clock in the morning",
+    dateDisplay: "Sunday, June 28, 2026",
+    yearDisplay: "10:00 AM",
+    timeDisplay: "Ten o'clock in the morning",
   },
 
   parents: {
@@ -41,7 +41,7 @@ export const content = {
     venue: "St. Peter the Apostle Parish",
     addressLine1: "Pres. M. L. Quezon St, Bantayan",
     addressLine2: "Cebu, 6052",
-    timeDisplay: "11:00 AM",
+    timeDisplay: "10:00 AM",
     // Map: keyless Google embed — no API key needed.
     mapEmbed:
       "https://maps.google.com/maps?q=St.%20Peter%20the%20Apostle%20Parish%20Bantayan%20Cebu&z=16&output=embed",
@@ -54,7 +54,7 @@ export const content = {
     venue: "Villaceran Residence",
     addressLine1: "San Antonio, Kabac",
     addressLine2: "Bantayan, Cebu",
-    timeDisplay: "1:00 PM",
+    timeDisplay: "12:00 PM",
     // Mapped by exact coordinates (it's a private residence).
     mapEmbed: "https://maps.google.com/maps?q=11.2371307,123.7156489&z=16&output=embed",
     mapLink: "https://maps.google.com/?q=11.2371307,123.7156489",
@@ -62,9 +62,9 @@ export const content = {
 
   // The order of the day — drives the Timeline section. Add/remove freely.
   schedule: [
-    { time: "11:00 AM", title: "Holy Mass", body: "The Rite of Baptism at St. Peter the Apostle Parish." },
-    { time: "12:00 PM", title: "Picture Taking", body: "A few keepsakes with family and friends." },
-    { time: "1:00 PM", title: "Lunch", body: "A warm meal together at the Villaceran Residence." },
+    { time: "10:00 AM", title: "Holy Mass", body: "The Rite of Baptism at St. Peter the Apostle Parish." },
+    { time: "11:30 AM", title: "Picture Taking", body: "A few keepsakes with family and friends." },
+    { time: "12:00 PM", title: "Lunch", body: "A warm meal together at the Villaceran Residence." },
     { time: "2:00 PM", title: "Program", body: "Toasts, well-wishes, and a few sweet surprises." },
     { time: "4:00 PM", title: "Sweet Send-off", body: "Cake, blessings, and a fond farewell." },
   ],
