@@ -95,7 +95,7 @@ export default function Hero() {
         animate={revealed ? "show" : "hidden"}
       >
         <motion.p variants={item} className="label-spaced mb-6">
-          {event.dateDisplay.split(",")[0]}
+          Save the Date
         </motion.p>
 
         <motion.p
